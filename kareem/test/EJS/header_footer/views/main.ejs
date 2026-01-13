@@ -6,10 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-   <% if(isLoggedin) {%>
-    <h1>Wlecome Back <%= username%></h1>
-    <% } else{ %>
-        <h1>Please Login to continue</h1>
-    <% } %>
+    
+    <%- include("partials/header") %>
+    <h1>Welcome to our Site!</h1>
+    <%- include("partials/footer") %>
 </body>
 </html>
