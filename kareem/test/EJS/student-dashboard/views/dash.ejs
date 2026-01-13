@@ -1,0 +1,81 @@
+<!-- views/dashboard.ejs -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Dashboard</title>
+    <style>
+        .admin-badge {
+            color: gold;
+            font-weight: bold;
+        }
+
+        .grade-a {
+            color: green;
+        }
+
+        .grade-bc {
+            color: blue;
+        }
+
+        .grade-other {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Student Info -->
+    <h1>
+        <%= student.name %>
+    </h1>
+    <p>
+        <%= student.email %>
+    </p>
+
+    <!-- Admin Badge -->
+    <% if (student.role==="admin" ) { %>
+        <div class="admin-badge">★ Admin Access</div>
+        <% } %>
+
+            <!-- Courses -->
+            <h2>Courses</h2>
+
+            <% if (courses.length===0) { %>
+                <p>No courses enrolled yet</p>
+                <% } else { %>
+                    <ul>
+                        <% courses.forEach(course=> { %>
+                            <li>
+                                <%= course.title %> -
+                                    <span class="
+              <%= course.grade === 'A'
+                  ? 'grade-a'
+                  : (course.grade === 'B' || course.grade === 'C')
+                  ? 'grade-bc'
+                  : 'grade-other' %>
+            ">
+                                        <%= course.grade %>
+                                    </span>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } %>
+
+                        <!-- Escaping vs Non-Escaping -->
+                        <h3>Notice (escaped)</h3>
+                        <p>
+                            <%= notice %>
+                        </p>
+
+                        <h3>Notice (rendered)</h3>
+                        <p><%- notice %></p>
+
+                        <a href="/logout">Logout</a>
+                        <!-- Footer -->
+                        <footer>
+                            <p>© 2025 Student Dashboard</p>
+                        </footer>
+</body>
+
+</html>

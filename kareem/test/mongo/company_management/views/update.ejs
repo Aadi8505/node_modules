@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Update Student</title>
+</head>
+<body>
+
+<h2>Update Student</h2>
+
+<form id="updForm">
+  <input id="name" value="<%= student.name %>" />
+  <input id="section" value="<%= student.section %>" />
+  <input id="marks" type="number" value="<%= student.marks %>" />
+  <button type="submit">Update</button>
+</form>
+
+<script>
+  document.getElementById("updForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    fetch("/updateStudent/<%= student._id %>", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: document.getElementById("name").value,
+        section: document.getElementById("section").value,
+        marks: document.getElementById("marks").value
+      })
+    }).then(() => {
+      window.location.href = "/";
+    });
+  });
+</script>
+
+</body>
+</html>

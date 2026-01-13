@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+</head>
+
+<body>
+    <h1>Admin Dashboard</h1>
+    <p>AdminName : <%= name %>
+    </p>
+    <p>LoginTime : <%= logintime %>
+    </p>
+    <p>Token : --- > <%= token %>
+    </p>
+
+
+    <h1>All current active tokens</h1>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Username</th>
+            <th>Role</th>
+            <th>IssuedAt</th>
+            <th>Expires In</th>
+        </tr>
+
+        <% sessions.forEach(s=> { %>
+            <tr>
+                <td>
+                    <%= s.username %>
+                </td>
+                <td>
+                    <%= s.role %>
+                </td>
+                <td>
+                    <%= new Date(s.issuedAt).toLocaleString() %>
+                </td>
+                <td>
+                    <%= new Date(s.expiresIn).toLocaleString() %>
+                </td>
+            </tr>
+            <% }) %>
+    </table>
+    <a href="/logout">Logout</a>
+</body>
+
+</html>

@@ -7,9 +7,6 @@ const PORT = 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// --------------------
-// Session Setup
-// --------------------
 app.use(
   session({
     secret: "super-secret-key",
@@ -19,23 +16,15 @@ app.use(
   })
 );
 
-// --------------------
-// In-memory session store (demo purpose)
-// --------------------
+
 const activeSessions = new Map();
 
-// --------------------
-// Dummy users
-// --------------------
 const users = {
   admin: { username: "admin", password: "admin123", role: "admin" },
   user1: { username: "user1", password: "user123", role: "user" },
   user2: { username: "user2", password: "user123", role: "user" }
 };
 
-// --------------------
-// Login Route
-// --------------------
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
   const user = users[username];
@@ -60,9 +49,6 @@ app.post("/login", (req, res) => {
   res.json({ message: "Login successful", role: user.role });
 });
 
-// --------------------
-// Auth Middleware
-// --------------------
 function isAuthenticated(req, res, next) {
   if (!req.session.user) {
     return res.status(401).json({ message: "Not authenticated" });
@@ -70,9 +56,7 @@ function isAuthenticated(req, res, next) {
   next();
 }
 
-// --------------------
-// Role Middleware
-// --------------------
+
 function isAdmin(req, res, next) {
   if (req.session.user.role !== "admin") {
     return res.status(403).json({ message: "Admin access only" });
@@ -80,9 +64,7 @@ function isAdmin(req, res, next) {
   next();
 }
 
-// --------------------
-// User Dashboard (Session Isolation)
-// --------------------
+
 app.get("/dashboard", isAuthenticated, (req, res) => {
   res.json({
     message: "Welcome to user dashboard",
@@ -90,9 +72,8 @@ app.get("/dashboard", isAuthenticated, (req, res) => {
   });
 });
 
-// --------------------
-// Admin Panel - View Active Sessions
-// --------------------
+
+
 app.get("/admin", isAuthenticated, isAdmin, (req, res) => {
   const sessions = [];
 
@@ -111,9 +92,7 @@ app.get("/admin", isAuthenticated, isAdmin, (req, res) => {
   });
 });
 
-// --------------------
-// Logout
-// --------------------
+
 app.post("/logout", isAuthenticated, (req, res) => {
   activeSessions.delete(req.sessionID);
   req.session.destroy(() => {
@@ -121,7 +100,6 @@ app.post("/logout", isAuthenticated, (req, res) => {
   });
 });
 
-// --------------------
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/addStudent" method="post" enctype="application/x-www-form-urlencoded">
+        Name:<input type="text" name="name">
+        Section:<input type="text" name="section">
+        Marks:<input type="number" name="marks">
+        <button>Add Student</button>
+    </form>
+    <form action="/filter" method="post" enctype="application/x-www-form-urlencoded">
+        <select name="filter">
+            <option value="gt">Greater Than</option>
+            <option value="lt">Less Than</option>
+            <option value="eq">Equal</option>
+        </select>
+        <input type="number" placeholder="Marks" name="marks">
+        <button>Filter</button>
+    </form>
+    <table border="1">
+       <thead>
+        <tr>
+            <th>Name</th>
+            <th>Section</th>
+            <th>Marks</th>
+            <th>Actions</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% data.forEach((val)=> { %>
+         <tr>
+            <td><%= val.Name %></td>
+            <td><%= val.Section %></td>
+            <td><%= val.Marks %></td>
+            <td>
+                <button><a href="/delete/<%= val._id %>">Delete</a></button>
+                <button><a href="/edit/<%= val._id %>">Edit</a></button>
+            </td>
+         </tr>
+        <% }) %>
+       </tbody>
+    </table>
+    <button><a href="/?page=<%= page-1 %>">prev</a></button>
+    <button><a href="/?page=<%= page+2 %>">next</a></button>
+</body>
+</html>

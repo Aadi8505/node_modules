@@ -1,0 +1,40 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Product Catalog</title>
+</head>
+
+<body>
+  <h1>Products</h1>
+
+  <ul>
+    <% products.forEach(p=> { %>
+      <li>
+        <%= p.id %> - <%= p.name %>
+      </li>
+      <% }) %>
+  </ul>
+
+  <p>Page <%= currentPage %> of <%= totalPages %>
+  </p>
+
+  <div>
+    <% if (currentPage> 1) { %>
+      <a href="/?page=<%= currentPage - 1 %>">Previous</a>
+      <% } else { %>
+        <span>Previous</span>
+        <% } %>
+
+          |
+
+          <% if (currentPage < totalPages) { %>
+            <a href="/?page=<%= currentPage + 1 %>">Next</a>
+            <% } else { %>
+              <span>Next</span>
+              <% } %>
+  </div>
+</body>
+
+</html>
