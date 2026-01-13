@@ -1,0 +1,62 @@
+[
+  {
+    "userId": 1,
+    "userName": "Alice Johnson",
+    "address": "123 Maple Street, Springfield, IL",
+    "dob": "1990-05-12"
+  },
+  {
+    "userId": 2,
+    "userName": "Bob Smith",
+    "address": "456 Oak Avenue, Denver, CO",
+    "dob": "1985-11-23"
+  },
+  {
+    "userId": 3,
+    "userName": "Charlie Brown",
+    "address": "789 Pine Road, Austin, TX",
+    "dob": "1992-07-04"
+  },
+  {
+    "userId": 4,
+    "userName": "Diana Prince",
+    "address": "321 Elm Street, Portland, OR",
+    "dob": "1988-01-17"
+  },
+  {
+    "userId": 5,
+    "userName": "Ethan Hunt",
+    "address": "654 Cedar Lane, Miami, FL",
+    "dob": "1995-03-09"
+  },
+  {
+    "userId": 6,
+    "userName": "Fiona Gallagher",
+    "address": "987 Birch Boulevard, Chicago, IL",
+    "dob": "1993-08-19"
+  },
+  {
+    "userId": 7,
+    "userName": "George Miller",
+    "address": "159 Walnut Drive, Seattle, WA",
+    "dob": "1987-06-14"
+  },
+  {
+    "userId": 8,
+    "userName": "Hannah Davis",
+    "address": "753 Cherry Street, Boston, MA",
+    "dob": "1991-10-27"
+  },
+  {
+    "userId": 9,
+    "userName": "Ian Wright",
+    "address": "852 Willow Avenue, Phoenix, AZ",
+    "dob": "1989-02-05"
+  },
+  {
+    "userId": 10,
+    "userName": "Julia Roberts",
+    "address": "951 Poplar Street, Los Angeles, CA",
+    "dob": "1994-12-15"
+  }
+]
