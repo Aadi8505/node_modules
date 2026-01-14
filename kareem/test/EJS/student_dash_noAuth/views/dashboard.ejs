@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Dashboard</title>
+  <style>
+    .green { color: green; }
+    .blue { color: blue; }
+    .red { color: red; }
+    .badge { background: gold; padding: 4px 8px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+  <h1>Welcome, <%= student.name %></h1>
+  <p>Email: <%= student.email %></p>
+
+ 
+  <% if (student.role === "admin") { %>
+    <span class="badge">★ Admin Access</span>
+  <% } %>
+
+  <hr>
+
+
+  <h2>Your Courses</h2>
+
+  <% if (courses.length === 0) { %>
+    <p>No courses enrolled yet</p>
+  <% } else { %>
+    <ul>
+      <% courses.forEach(course => { %>
+        <% 
+          let gradeClass = "red";
+          if (course.grade === "A") gradeClass = "green";
+          else if (course.grade === "B" || course.grade === "C") gradeClass = "blue";
+        %>
+
+        <li>
+          <%= course.title %> -
+          <span class="<%= gradeClass %>"><%= course.grade %></span>
+        </li>
+      <% }) %>
+    </ul>
+  <% } %>
+
+  <hr>
+
+
+  <h3>Notice (Escaped)</h3>
+  <p><%= notice %></p>
+
+  <h3>Notice (Rendered HTML)</h3>
+  <p><%- notice %></p>
+
+  <hr>
+
+
+  <%- include("footer") %>
+
+</body>
+</html>
